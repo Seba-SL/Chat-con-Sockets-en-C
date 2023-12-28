@@ -16,3 +16,16 @@ operativos del tipo Unix.
 
 •Diversos programas corriendo en computadoras diferentes dentro de
 una red, pueden comunicarse a través del uso de sockets.
+
+
+
+
+
+
+Fuentes:
+
+https://cs.uns.edu.ar/~ldm/data/rc/apuntes/introduccion_al_uso_de_sockets.pdf
+
+https://ocw.unican.es/pluginfile.php/2343/course/section/2300/PIR-Practica4_ManualSocketsC.pdf
+
+https://blog.facialix.com/wp-content/uploads/2022/05/Programacion-de-Sockets-M3.pdf
