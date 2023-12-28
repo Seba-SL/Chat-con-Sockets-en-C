@@ -18,6 +18,9 @@ operativos del tipo Unix.
 una red, pueden comunicarse a través del uso de sockets.
 
 
+![estructuraApi drawio](https://github.com/Seba-SL/Sockets-en-C/assets/65742172/ed5679ea-1ca1-4d50-ac26-eacecf1e1de8)
+
+
 
 
 
