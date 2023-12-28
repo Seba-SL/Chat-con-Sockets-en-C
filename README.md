@@ -40,6 +40,7 @@ distintos paquetes que reciba la máquina (proceso de multiplexación).Un socket
 Una comunicación entre dos procesos se identifica mediante la asociación de los sockets que estos emplean para enviar y recibir información hacia y desde la red:
 identificador de socket origen + identificador de socket destino
 
+![estructura](https://github.com/Seba-SL/Sockets-en-C/assets/65742172/4bba6823-10c7-4757-be41-66360792e02c)
 
 
 
