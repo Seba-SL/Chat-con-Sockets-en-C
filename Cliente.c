@@ -16,7 +16,9 @@
 
 typedef enum {OK ,ERROR}estado_t;
 
+//Funcion auxiliar
 int conectar(char *hostname, int port, int debug);
+
 
 
 int main(int argc, char **argv)
