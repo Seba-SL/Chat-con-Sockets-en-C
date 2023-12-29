@@ -88,6 +88,31 @@ El socket esta configurado para usar direcciones IPv4 , mediante la macro PF_INE
 ![chatSockets](https://github.com/Seba-SL/Sockets-en-C/assets/65742172/492ca993-7bac-4221-8e0b-022afde1c4c4)
 
 
+Funciones y estructuras :
+
+Estructura de sockaddr , varia según el protocolo seleccionado 
+
+Para IPv4
+
+```c
+      struct sockaddr {
+            ushort  sa_family;
+            char    sa_data[14];
+      };
+
+      struct sockaddr_in {
+        short   sin_family;
+        u_short sin_port;
+        struct  in_addr sin_addr;
+        char    sin_zero[8];
+      };
+```
+![Sockets_presentacion-Página-3 drawio](https://github.com/Seba-SL/Sockets-en-C/assets/65742172/8c1f175b-d943-4bb1-a97c-5220cfca89f0)
+
+![flujoSocket](https://github.com/Seba-SL/Sockets-en-C/assets/65742172/e136dac5-c709-431e-9f85-4e4990df54db)
+
+
+
 Fuentes:
 
 https://cs.uns.edu.ar/~ldm/data/rc/apuntes/introduccion_al_uso_de_sockets.pdf
