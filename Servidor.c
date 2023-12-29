@@ -24,33 +24,36 @@ int main(int argc, char **argv)
 {
 
   int sock = 0,sockup ,bytes_recibidos = 0  ;
-
-  char msg[MAX_BUFFER],buff[MAX_BUFFER];
-
   sock = abrir_conexion(8000 ,10, 1);
 
 
 while( true )
 {	
+		char msg[MAX_BUFFER],buff[MAX_BUFFER];
 
+  		sockup = aceptar_pedidos(sock, 0);
 
+        printf("\nEsperando mensaje del cliente...\n");
 
-  bytes_recibidos = 0 ;
-  //bloqueante
-  sockup = aceptar_pedidos(sock , 1);
+        // Recibe el mensaje del cliente
+        bytes_recibidos = recv(sockup, buff, sizeof(buff), 0);
 
-  printf("\nsend msg: \n");
+        if (bytes_recibidos > 0) {
+            buff[bytes_recibidos] = '\0'; // Asegúrate de terminar la cadena
+            printf("\nSe recibió del cliente: %s\n", buff);
+        }
 
-  fgets(msg,MAX_BUFFER ,stdin);
+		fflush(stdin);
+        printf("\nEnviar mensaje al cliente: ");
+        fgets(msg, MAX_BUFFER, stdin);
 
-  write(sockup , msg , strlen(msg));
+        // Envía el mensaje de vuelta al cliente
+        write(sockup , msg , strlen(msg));
 
-
-  close(sockup);
- 
+      
 }	
 
- 
+  close(sockup);
   close(sock);
 
   return OK;

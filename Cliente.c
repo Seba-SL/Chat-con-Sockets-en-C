@@ -24,29 +24,33 @@ int conectar(char *hostname, int port, int debug);
 int main(int argc, char **argv)
 {
   int sock,bytes_recibidos;
-  char buff[MAX_BUFFER] , msg[MAX_BUFFER];
-
-  
+ 
 
 
-while( strcmp(buff , "adios") != 0)
+
+while( true)
 {
-  sock =  conectar("localhost", 8000,0);
-  bytes_recibidos = read(sock , buff , MAX_BUFFER );
+		  
+	   sock =  conectar("localhost", 8000,0);	
+		char buff[MAX_BUFFER] , msg[MAX_BUFFER];
 
-  buff[bytes_recibidos] = 0;
+		fflush(stdin);
+
+		printf("Enviar mensaje: ");
+        fgets(msg, MAX_BUFFER, stdin);
+
+        // Envía el mensaje al servidor
+       // send(sock, msg, strlen(msg), 0);
+	    write(sock , msg , strlen(msg));
 
 
-  if( strlen(buff) > 0 )
- 	printf("\nSe recibio del servidor : %s \n",buff);
+		bytes_recibidos =  recv(sock, buff, sizeof(buff), 0);
+        
+		buff[bytes_recibidos] = '\0'; // Asegúrate de terminar la cadena
 
-
-  puts("Enviar msg\n");
-  fgets(msg,MAX_BUFFER ,stdin);
-
-  send(sock , msg , strlen(msg) , 0 );
-
-  
+        if (bytes_recibidos > 0) {
+            printf("\nSe recibió del servidor: %s\n", buff);
+        }        
 
 
 }
