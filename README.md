@@ -2,6 +2,30 @@
 
 ![presentacion](https://github.com/Seba-SL/Sockets-en-C/assets/65742172/75557a66-510c-4730-9c20-1d5e3c3909da)
 
+En este proyecto se crea una conexion por medio de sockets en lenguaje C , para enviar y recibir mensajes a traves de un cliente y un servidor.
+
+- Para compilar:
+
+```bash
+gcc -o Servidor Servidor.c
+```
+
+- Para ejecutar:
+
+```bash
+./Servidor "puerto"
+```
+
+```bash
+gcc -o Cliente Cliente.c
+```
+
+- Para ejecutar:
+
+```bash
+./Cliente "Direccion-ip" "puerto"
+```
+
 Para la comunicación por medio del protocolo TCP/UDP entre dos programas se puede hacer mediante diferentes API's , una de esas APIs es la conocida como Sockets (BSD: Berkeley sockets).
 
 TCP : Transmission Control Protocol
