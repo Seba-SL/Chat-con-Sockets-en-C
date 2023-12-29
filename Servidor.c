@@ -24,13 +24,22 @@ int main(int argc, char **argv)
 {
 
   int sock = 0,sockup ,bytes_recibidos = 0  ;
-  sock = abrir_conexion(8000 ,10, 1);
+  char msg[MAX_BUFFER],buff[MAX_BUFFER];
+
+  sock = abrir_conexion(PORT ,10, 0);
+
+		
+  if(sock == ERROR_GENERAL)
+	{
+		return ERROR_GENERAL;
+	}
+
+  printf("\nSe establecio el servidor correctamente en el puerto %d \n", PORT);
 
 
-while( true )
+while( strcmp(buff , "adios") != 0 )
 {	
-		char msg[MAX_BUFFER],buff[MAX_BUFFER];
-
+	 
   		sockup = aceptar_pedidos(sock, 0);
 
         printf("\nEsperando mensaje del cliente...\n");
@@ -67,7 +76,7 @@ int abrir_conexion(int port, int backlog, int debug)
 	struct sockaddr_in mi_direccion;
 
 	/*Crea un socket y verifica si hubo algún error*/
-	if ((sockaux = socket(AF_INET, SOCK_STREAM, 0)) == ERROR_GENERAL)
+	if ((sockaux = socket(PF_INET, SOCK_STREAM, 0)) == ERROR_GENERAL)
 	{
 		fprintf(stderr, "Error en función socket(). Código de error %s\n", strerror(sockaux));
 		return ERROR_GENERAL;

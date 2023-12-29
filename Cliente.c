@@ -24,29 +24,38 @@ int conectar(char *hostname, int port, int debug);
 int main(int argc, char **argv)
 {
   int sock,bytes_recibidos;
- 
+  char buff[MAX_BUFFER] , msg[MAX_BUFFER];
 
 
 
-while( true)
+while( strcmp(buff , "adios") != 0 )
 {
 		  
 	   sock =  conectar("localhost", 8000,0);	
-		char buff[MAX_BUFFER] , msg[MAX_BUFFER];
+		
+		if(sock == ERROR_GENERAL)
+		{
+			return ERROR_GENERAL;
+		}
+
+		
 
 		fflush(stdin);
 
-		printf("Enviar mensaje: ");
+		printf("Enviar mensaje al servidor : ");
         fgets(msg, MAX_BUFFER, stdin);
+		puts("Esperando respuesta del servidor\n");
 
         // Envía el mensaje al servidor
        // send(sock, msg, strlen(msg), 0);
 	    write(sock , msg , strlen(msg));
 
-
+		
 		bytes_recibidos =  recv(sock, buff, sizeof(buff), 0);
         
 		buff[bytes_recibidos] = '\0'; // Asegúrate de terminar la cadena
+
+	
 
         if (bytes_recibidos > 0) {
             printf("\nSe recibió del servidor: %s\n", buff);
@@ -79,7 +88,7 @@ int conectar(char *hostname, int port, int debug)
 	  Parametros---> familia de direcciones INET  , tipo de socket SOCKET_STREAM = TCP   , protocolo , determina la capa de transporte 
 	  devuelve un entero , si es -1 no se pudo crear  , de lo contrario devuelve un descriptor del archivo de socket 
 	*/
-	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == ERROR_GENERAL)
+	if ((sockfd = socket(PF_INET, SOCK_STREAM, 0)) == ERROR_GENERAL)
 	{
 		perror("Error en creación de socket");
 		exit(1);
