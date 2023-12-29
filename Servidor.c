@@ -52,13 +52,13 @@ int main(int argc, char **argv)
 
   printf("\nSe establecio el servidor correctamente en el puerto %d , esperando clientes \n", puerto);
 
-sockup = aceptar_pedidos(sock, 1);
-
+  sockup = aceptar_pedidos(sock, 1);
 
 while( strcmp(buff , "adios") != 0 )
 {	
 	 
   		
+		
 
         printf("\nEsperando mensaje del cliente...\n");
 
@@ -79,8 +79,8 @@ while( strcmp(buff , "adios") != 0 )
 
       
 }	
-
-  close(sockup);
+ close(sockup);
+ 
   close(sock);
 
   return OK;
