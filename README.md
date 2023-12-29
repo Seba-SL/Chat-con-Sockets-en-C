@@ -6,6 +6,8 @@ En este proyecto se crea una conexion por medio de sockets en lenguaje C , para 
 
 - Para compilar:
 
+Servidor
+
 ```bash
 gcc -o Servidor Servidor.c
 ```
@@ -15,6 +17,8 @@ gcc -o Servidor Servidor.c
 ```bash
 ./Servidor "puerto"
 ```
+
+Cliente
 
 ```bash
 gcc -o Cliente Cliente.c
