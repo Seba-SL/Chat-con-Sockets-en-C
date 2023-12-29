@@ -76,6 +76,15 @@ identificador de socket origen + identificador de socket destino
 
 ![estructura](https://github.com/Seba-SL/Sockets-en-C/assets/65742172/4bba6823-10c7-4757-be41-66360792e02c)
 
+Flujo de comunicación:
+![flujoSocket](https://github.com/Seba-SL/Sockets-en-C/assets/65742172/7283ae5b-2337-4c48-854b-cb4d4390bb9c)
+
+El socket esta configurado para usar direcciones IPv4 , mediante la macro PF_INET
+![flujoSocket](https://github.com/Seba-SL/Sockets-en-C/assets/65742172/6882e32d-d9ec-4940-a180-fd3bfb7c590f)
+
+![flujo_comunicacion drawio](https://github.com/Seba-SL/Sockets-en-C/assets/65742172/a2e2e27a-5438-43e1-9eb0-022e9475e5e9)
+
+
 ![chatSockets](https://github.com/Seba-SL/Sockets-en-C/assets/65742172/492ca993-7bac-4221-8e0b-022afde1c4c4)
 
 
