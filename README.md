@@ -5,9 +5,11 @@
 Para la comunicación por medio del protocolo TCP/UDP entre dos programas se puede hacer mediante diferentes API's , una de esas APIs es la conocida como Sockets (BSD: Berkeley sockets).
 
 TCP : Transmission Control Protocol
+
 El rol de TCP es garantizar que los paquetes se entreguen de forma confiable y sin errores. TCP tiene control de concurrencia, lo que significa que las solicitudes iniciales serán pequeñas, aumentando de tamaño a los niveles de ancho de banda que los ordenadores, servidores y redes puedan soportar.
 
 UDP : User Datagram Protocol
+
 se utiliza en Internet para transmisiones sujetas a limitaciones temporales, como la reproducción de vídeo o las búsquedas en DNS. Acelera las comunicaciones al no establecer formalmente una conexión antes de transferir los datos. Esto permite que los datos se transfieran muy rápido, pero también puede hacer que los paquetes se pierdan en tránsito 
 
 ![image](https://github.com/Seba-SL/Sockets-en-C/assets/65742172/9a60897c-0a11-44e1-bc60-9deeae34beb2)
