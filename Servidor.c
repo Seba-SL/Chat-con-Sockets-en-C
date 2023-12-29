@@ -9,8 +9,9 @@
 #include <stdbool.h>
 
 #define MAX_BUFFER 4096
-#define PORT 8000  
+#define PORT 5000  
 #define BACKLOG 10 /* Tamaño de la cola de conexiones recibidas */
+#define DIRECCION_IP_SERVIDOR "local_host"
 #define ERROR_GENERAL -1
 
 typedef enum {OK ,ERROR}estado_t;
@@ -19,14 +20,29 @@ int abrir_conexion(int port, int backlog, int debug);
 int aceptar_pedidos(int sockfd, int debug);
 
 
+// ./cliente "puerto"
 
 int main(int argc, char **argv)
 {
 
-  int sock = 0,sockup ,bytes_recibidos = 0  ;
+  int sock = 0,sockup ,bytes_recibidos = 0 ,puerto ;
   char msg[MAX_BUFFER],buff[MAX_BUFFER];
+   char direccion_ip[MAX_BUFFER];
+	
+	if(argc != 2)
+	{
+		printf("Por defecto se conecta al puerto %d \n",PORT);
+		puerto = PORT;
+		
+	}else{
+		
+		puerto = (int) strtol(argv[1], NULL, 10);
+		
+	}
 
-  sock = abrir_conexion(PORT ,10, 0);
+
+
+  sock = abrir_conexion(puerto ,10, 1);
 
 		
   if(sock == ERROR_GENERAL)
@@ -34,13 +50,15 @@ int main(int argc, char **argv)
 		return ERROR_GENERAL;
 	}
 
-  printf("\nSe establecio el servidor correctamente en el puerto %d \n", PORT);
+  printf("\nSe establecio el servidor correctamente en el puerto %d , esperando clientes \n", puerto);
+
+sockup = aceptar_pedidos(sock, 1);
 
 
 while( strcmp(buff , "adios") != 0 )
 {	
 	 
-  		sockup = aceptar_pedidos(sock, 0);
+  		
 
         printf("\nEsperando mensaje del cliente...\n");
 
@@ -99,7 +117,7 @@ int abrir_conexion(int port, int backlog, int debug)
 	if (port == 0)
 		port = PORT;
 
-	mi_direccion.sin_family = AF_INET;		  /* familia de sockets INET para UNIX*/
+	mi_direccion.sin_family = PF_INET;		  /* familia de sockets INET para UNIX*/
 	mi_direccion.sin_port = htons(port);		  /* convierte el entero formato PC a entero formato network*/
 	mi_direccion.sin_addr.s_addr = INADDR_ANY; /* automaticamente usa la IP local */
 	bzero(&(mi_direccion.sin_zero), 8);		  /* rellena con ceros el resto de la estructura */

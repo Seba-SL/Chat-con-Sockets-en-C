@@ -9,8 +9,8 @@
 #include <stdbool.h>
 
 #define MAX_BUFFER 4096
-#define PORT 8000  
-
+#define PORT 5000
+#define DIRECCION_IP_SERVIDOR "localhost"
 #define ERROR_GENERAL -1
 
 
@@ -20,18 +20,35 @@ typedef enum {OK ,ERROR}estado_t;
 int conectar(char *hostname, int port, int debug);
 
 
+// ./cliente "direccion_ip" "puerto"
 
 int main(int argc, char **argv)
 {
-  int sock,bytes_recibidos;
+  int sock,bytes_recibidos,puerto;
   char buff[MAX_BUFFER] , msg[MAX_BUFFER];
+  char direccion_ip[MAX_BUFFER];
 
+	if(argc != 3)
+	{
+		printf("Por defecto se conecta a la red local\n");
+		puerto = PORT;
+		strcpy(direccion_ip , DIRECCION_IP_SERVIDOR);
+	}else
+	{
+		strcpy(direccion_ip , argv[1]);
+		puerto = (int) strtol(argv[2], NULL, MAX_BUFFER);
+		
+	}
 
+	
+	
+    printf("Intentando conexion a la direccion %s por el puerto %d.\n",direccion_ip, puerto);
+  sock =  conectar(direccion_ip, puerto,1);	
 
 while( strcmp(buff , "adios") != 0 )
 {
 		  
-	   sock =  conectar("localhost", 8000,0);	
+	 
 		
 		if(sock == ERROR_GENERAL)
 		{
@@ -102,9 +119,12 @@ int conectar(char *hostname, int port, int debug)
 	port = (port == 0) ? htons(PORT) : htons(port);
 
 	/* Establecemos su_direccion con la direccion del server */
-	su_direccion.sin_family = AF_INET; //familia de direccion 
+	su_direccion.sin_family = PF_INET; //familia de direccion 
 	su_direccion.sin_port = port;
 	su_direccion.sin_addr = *((struct in_addr *)he->h_addr);
+
+
+	
 	bzero(&(su_direccion.sin_zero), 8);
 
 	/* Intentamos conectarnos con el servidor
