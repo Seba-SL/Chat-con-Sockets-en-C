@@ -76,6 +76,7 @@ identificador de socket origen + identificador de socket destino
 
 ![estructura](https://github.com/Seba-SL/Sockets-en-C/assets/65742172/4bba6823-10c7-4757-be41-66360792e02c)
 
+![chatSockets](https://github.com/Seba-SL/Sockets-en-C/assets/65742172/492ca993-7bac-4221-8e0b-022afde1c4c4)
 
 
 Fuentes:
