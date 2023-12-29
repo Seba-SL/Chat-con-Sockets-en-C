@@ -9,26 +9,30 @@ En este proyecto se crea una conexion por medio de sockets en lenguaje C , para 
 Servidor
 
 ```bash
-gcc -o Servidor Servidor.c
+gcc -o servidor Servidor.c
 ```
 
 - Para ejecutar:
 
 ```bash
-./Servidor "puerto"
+./servidor 
+./servidor "puerto"
 ```
 
 Cliente
 
 ```bash
-gcc -o Cliente Cliente.c
+gcc -o cliente Cliente.c
 ```
 
 - Para ejecutar:
 
 ```bash
-./Cliente "Direccion-ip" "puerto"
+./cliente
+./cliente "Direccion-ip" "puerto"
 ```
+*Si se ejecuta sin parametros se tomara el localhost como direccion IP y un puerto por defecto
+
 
 Para la comunicación por medio del protocolo TCP/UDP entre dos programas se puede hacer mediante diferentes API's , una de esas APIs es la conocida como Sockets (BSD: Berkeley sockets).
 
